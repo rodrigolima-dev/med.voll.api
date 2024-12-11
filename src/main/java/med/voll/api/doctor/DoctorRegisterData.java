@@ -6,7 +6,7 @@ public record DoctorRegisterData (
         String nome,
         String email,
         String crm,
-        Specialty specialty,
-        AddressData address
+        Specialty especialidade,
+        AddressData endereco
 ){
 }

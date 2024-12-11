@@ -13,6 +13,6 @@ public class DoctorController {
 
     @PostMapping
     public void register(@RequestBody DoctorRegisterData data) {
-        System.out.println(data);
+        System.out.println(data.endereco());
     }
 }
