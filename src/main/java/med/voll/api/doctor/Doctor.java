@@ -27,6 +27,8 @@ public class Doctor {
     @NotNull
     private Address endereco;
 
+    private Boolean ativo;
+
     public Doctor() {}
 
     public Doctor(DoctorRegisterData data) {
@@ -36,6 +38,7 @@ public class Doctor {
         this.telefone = data.telefone();
         this.especialidade = data.especialidade();
         this.endereco = new Address(data.endereco());
+        this.ativo = true;
     }
 
     public Long getId() {
@@ -104,5 +107,9 @@ public class Doctor {
         if (data.endereco() != null) {
             this.endereco.updateData(data.endereco());
         }
+    }
+
+    public void delete() {
+        this.ativo = false;
     }
 }
