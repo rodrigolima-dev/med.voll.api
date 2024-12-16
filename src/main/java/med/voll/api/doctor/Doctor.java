@@ -1,6 +1,7 @@
 package med.voll.api.doctor;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -35,6 +36,14 @@ public class Doctor {
         this.telefone = data.telefone();
         this.especialidade = data.especialidade();
         this.endereco = new Address(data.endereco());
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -83,5 +92,17 @@ public class Doctor {
 
     public void setEndereco(@NotNull Address endereco) {
         this.endereco = endereco;
+    }
+
+    public void updateData(@Valid DoctorUpdateData data) {
+        if (data.nome() != null) {
+            this.nome = data.nome();
+        }
+        if (data.telefone() != null) {
+            this.telefone = data.telefone();
+        }
+        if (data.endereco() != null) {
+            this.endereco.updateData(data.endereco());
+        }
     }
 }
