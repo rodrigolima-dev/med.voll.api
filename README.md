@@ -1,66 +1,29 @@
-# Voll Med API  
+# Med Voll API
 
-## Sobre o Projeto  
-A **Voll Med API** é uma aplicação desenvolvida em **Java com Spring Boot** para facilitar a gestão de dados relacionados a médicos e pacientes. O projeto foi criado com foco no desenvolvimento de um backend robusto, organizado e escalável, utilizando boas práticas e ferramentas modernas.  
-![Imagem de ilustração](src/main/java/med/voll/api/illustration/vollmed.PNG)
+A Java 17 and Spring Boot learning project for managing doctor and patient records. It was built while studying REST APIs, validation, persistence, and Flyway migrations. It is a course-based exercise, not a production medical system.
 
-## Tecnologias Utilizadas  
-- **Java 17**  
-- **Spring Boot 3**  
-- **MySQL**  
-- **Flyway** (para migrações de banco de dados)  
-- **Bean Validation** (para validação de dados)  
-- **Postman** (para testes da API)  
+## What is implemented
 
----
+- Doctor and patient registration, listing, updates, and logical deletion through `/medicos` and `/pacientes`.
+- Request validation and paginated lists.
+- MySQL persistence with Flyway schema migrations.
 
-## Funcionalidades  
-- **CRUD para médicos e pacientes**: Permite criar, ler, atualizar e excluir informações.  
-- **Paginação de dados**: Otimiza a consulta de grandes volumes de informações.  
-- **Validação de dados**: Garante que apenas informações consistentes sejam processadas.  
-- **Gerenciamento de migrações**: Evolução do banco de dados facilitada com Flyway.  
+## Run locally
 
----
+1. Install Java 17 and start a local MySQL instance.
+2. Create an empty database named `vollmed` and a local database user with access to it.
+3. Set `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, and `SPRING_DATASOURCE_PASSWORD` for that local database. Example URL: `jdbc:mysql://localhost:3306/vollmed`.
+4. Run `./mvnw spring-boot:run` on macOS/Linux or `.\mvnw.cmd spring-boot:run` on Windows.
 
-## Organização do Projeto  
-Toda a documentação do projeto foi organizada no Trello, detalhando as regras e validações das funcionalidades implementadas.  
+The application is configured for local development. Do not use real patient data. Flyway applies the included migrations to the configured database when the app starts.
 
-- **Trello:** [Acesse aqui](https://trello.com/invite/b/6758a72e4763e56a265fa4dc/ATTIc9d61f3ffe93eddb35fb00e73c81c9275CC33A91)  
+## Check the code
 
----
+- Controllers: `src/main/java/med/voll/api/controller`
+- Data model and validation: `src/main/java/med/voll/api/doctor` and `src/main/java/med/voll/api/patient`
+- Migrations: `src/main/resources/db/migration`
+- Current automated check: `./mvnw test` or `.\mvnw.cmd test`; it contains an application-context smoke test, not full endpoint coverage.
 
-## Testes  
-Como o foco do projeto foi no desenvolvimento do backend, utilizei o **Postman** para testar e validar todas as funcionalidades implementadas.  
+## Resumo em português
 
----
-
-## Como Executar o Projeto  
-
-1. **Clone o repositório:**  
-   ```bash
-   git clone https://github.com/rodrigolima-dev/med.voll.api.git
-   cd med.voll.api
-
-   Configure o banco de dados MySQL:
-
-## Configuração do Banco de Dados  
-
-1. **Configure o banco de dados MySQL:**  
-   - Crie um banco de dados com o nome `vollmed`.  
-
-2. **Atualize as credenciais no arquivo `application.properties`:**  
-   Abra o arquivo e configure suas credenciais de acesso ao MySQL:  
-   ```properties
-   spring.datasource.url=jdbc:mysql://localhost:3306/vollmed
-   spring.datasource.username=SEU_USUARIO
-   spring.datasource.password=SUA_SENHA
-
-Importe o arquivo de configuração do Postman (se aplicável).
-Acesse as rotas documentadas para testar as funcionalidades.
-Contribuição
-Contribuições são sempre bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
-
-Contato
-
-LinkedIn: [Rodrigo Lima](https://www.linkedin.com/in/rodrigo-lima-95a548242/)
-
+Projeto de estudo em Java 17 e Spring Boot para cadastro de médicos e pacientes. Demonstra APIs REST, validação, MySQL e migrations Flyway. Use apenas dados fictícios e um banco local. Os testes automatizados atuais cobrem a inicialização da aplicação; testes de endpoint ainda são uma melhoria pendente.
